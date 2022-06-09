@@ -6,7 +6,7 @@ import Navbar from '../Shared/Navbar';
 
 const Home = () => {
     return (
-        <div>
+        <div id='home'>
             <Navbar />
             <Banner />
             <About/>
