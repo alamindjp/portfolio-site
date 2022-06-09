@@ -3,9 +3,9 @@ import ProfileImage from '../../Assets/Image/Profile-Image.png'
 
 const Banner = () => {
     return (
-        <div className="hero min-h-screen mt-10">
+        <div className="hero min-h-screen w-4/5 mx-auto mt-10">
             <div className="hero-content flex-col md:flex-row-reverse">
-                <div className="w-50 mask mask-squircle">
+                <div className="mask mask-squircle">
                 <img src={ProfileImage} className="max-w-sm rounded-lg shadow-2xl w-[200px] sm:w-full" alt='Pic' />
                 </div>
                 <div className='md:pr-10 lg:pr-32'>
