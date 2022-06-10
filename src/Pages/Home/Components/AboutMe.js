@@ -1,7 +1,7 @@
 import React from 'react';
-import AboutImage from "../../Assets/Image/About-Image.jpg"
+import AboutImage from "../../../Assets/Image/About-Image.jpg"
 
-const About = () => {
+const AboutMe = () => {
     return (
         <div id='about' className='w-4/5 mx-auto mt-36'>
             <div className="hero">
@@ -18,4 +18,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default AboutMe;
