@@ -2,7 +2,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bgSemi: "#2E0249",
+        textSemi: "#B7E5DD",
+        headingSemi: "#5FD068",
+      },
+    },
   },
   daisyui: {
     themes: [
