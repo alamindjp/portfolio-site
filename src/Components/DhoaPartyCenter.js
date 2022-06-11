@@ -1,21 +1,21 @@
 import React from 'react';
-import totoShop1 from '../Assets/webImage/TotoShop1.png'
-import totoShop2 from '../Assets/webImage/TotoShop2.png'
-import totoShop3 from '../Assets/webImage/TotoShop3.png'
-import totoShop4 from '../Assets/webImage/TotoShop1.png'
 import Navbar from '../Pages/Shared/Navbar';
+import dhoa1 from '../Assets/webImage/Dhoa1.png'
+import dhoa2 from '../Assets/webImage/Dhoa2.png'
+import dhoa3 from '../Assets/webImage/Dhoa3.png'
+import dhoa4 from '../Assets/webImage/Dhoa1.png'
 
-const TotoShop = () => {
+const DhoaPartyCenter = () => {
     return (
         <div>
             <Navbar />
             <h2 className="text-5xl mt-10 pb-5 shadow-lg">Site Details</h2>
             <div className="container mx-auto card mt-20">
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                    <figure><img className='card opacity-90' src={totoShop1} alt="Shoes" /></figure>
-                    <figure><img className='card opacity-90' src={totoShop2} alt="Shoes" /></figure>
-                    <figure><img className='card opacity-90' src={totoShop3} alt="Shoes" /></figure>
-                    <figure><img className='card opacity-90' src={totoShop4} alt="Shoes" /></figure>
+                    <figure><img className='card opacity-90' src={dhoa1} alt="Shoes" /></figure>
+                    <figure><img className='card opacity-90' src={dhoa2} alt="Shoes" /></figure>
+                    <figure><img className='card opacity-90' src={dhoa3} alt="Shoes" /></figure>
+                    <figure><img className='card opacity-90' src={dhoa4} alt="Shoes" /></figure>
                 </div>
                 <div className="card-body">
                     <h2 className="card-title text-5xl mt-10 border-b-4 pb-5">Toto Shop</h2>
@@ -32,7 +32,7 @@ const TotoShop = () => {
                             <p className='text-start bg-slate-600 pl-5 p-3 rounded-xl'><span className="badge badge-sm bg-info align-middle mr-2"></span>CSS</p>
                             <p className='text-start bg-slate-600 pl-5 p-3 rounded-xl'><span className="badge badge-sm bg-info align-middle mr-2"></span>JAVASCRIPT</p>
                             <p className='text-start bg-slate-600 pl-5 p-3 rounded-xl'><span className="badge badge-sm bg-info align-middle mr-2"></span>REACT</p>
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,4 +40,4 @@ const TotoShop = () => {
     );
 };
 
-export default TotoShop;
+export default DhoaPartyCenter;

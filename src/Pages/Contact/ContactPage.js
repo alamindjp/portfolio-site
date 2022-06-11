@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import linkedIn from '../../Assets/Icon/linkedin.svg'
 import facebook from '../../Assets/Icon/facebook.svg'
 import github from '../../Assets/Icon/github.svg'
 import gmail from '../../Assets/Icon/gmail.svg'
+import email from '../../Assets/Icon/email.png'
+import phone from '../../Assets/Icon/phone.png'
+import location from '../../Assets/Icon/location.png'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
+import emailjs from '@emailjs/browser';
 
 const ContactPage = () => {
+    const [value, setValue] = useState();
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_w9hjy1j', 'template_hrjpwvi', form.current, '_QyVU6DWAeKO34Y0z')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
+
     return (
         <>
             <Navbar />
@@ -16,52 +34,67 @@ const ContactPage = () => {
             <div id='contact' className="hero mt-20">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left lg:pr-32">
-                        <h1 className="text-5xl font-bold text-bgSemi">Get In <span className='text-error'>Touch</span></h1>
-                        <p className="py-6">Send me an email if you think I can help you out with any of your web related projects.</p>
-                        <h1 className="text-5xl font-bold text-bgSemi">My Socials</h1>
-                        <ul className='flex lg:justify-start justify-center mt-10'>
-                            <li className='px-2'><a href="https://github.com/alamindjp" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={github} alt="" /></a></li>
-                            <li className='px-2'><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMVxgSRldqFwkkttbMSnMPqwBMSsmZtscJpZMJHFNbrqZbsHkjjFbhBlgJTVCRmWWnBdlrR" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={gmail} alt="" /></a></li>
-                            <li className='px-2'><a href="https://www.linkedin.com/in/alamindjp/" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={linkedIn} alt="" /></a></li>
-                            <li className='px-2'><a href="https://www.facebook.com/alamindjp/" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={facebook} alt="" /></a></li>
-                        </ul>
+                        <div>
+                            <h3 className="text-4xl font-bold text-info mt-10">Contact <span className='text-success'>Info</span></h3>
+                            <div className='mt-5'>
+                                <p className='flex items-center'><img className='w-[45px] pr-3' src={email} alt="" /> <span className='text-xl'>alaminhossaindjp@gmail.com</span></p>
+                                <p className='flex items-center'><img className='w-[40px] my-3 pr-3' src={phone} alt="" /> <span className='text-xl'>(+880) 1785740163</span></p>
+                                <p className='flex items-center'><img className='w-[40px] pr-3' src={location} alt="" /> <span className='text-xl'>Kushtia, Bangladesh</span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-bgSemi mt-10">
-                        <div className="card-body">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-bgSemi">
+                        <form ref={form} onSubmit={sendEmail} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-textSemi">Name</span>
                                 </label>
-                                <input type="text" placeholder="Name" className="input input-bordered bg-base-200 text-black" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-textSemi">Phone</span>
-                                </label>
-                                <PhoneInput
-                                    className="input input-bordered bg-base-200 text-black"
-                                    placeholder="Enter phone number"
-                                    defaultCountry="US" />
+                                <input type="text" name="user_name" placeholder="Name" className="input input-bordered bg-base-200 text-black" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-textSemi">Email</span>
                                 </label>
-                                <input type="text" placeholder="Email" className="input input-bordered bg-base-200 text-black" />
+                                <input type="email" name="user_email" placeholder="Email" className="input input-bordered bg-base-200 text-black" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-textSemi">Comments</span>
+                                    <span className="label-text text-textSemi">Email</span>
                                 </label>
-                                <textarea class="textarea textarea-bordered" placeholder="Comments" />
+                                <PhoneInput
+                                    className="input input-bordered bg-base-200 text-black"
+                                    name="user_phone"
+                                    placeholder="Enter phone number"
+                                    value={value}
+                                    defaultCountry="BD"
+                                    onChange={setValue} />
+                            </div>
+                            
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text text-textSemi">Massage</span>
+                                </label>
+                                <textarea name="message" className="textarea textarea-bordered text-black" placeholder="Massage" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-success hover:btn-success btn-outline text-textSemi">Login</button>
+                                <input type="submit" value="Send" className="btn btn-success hover:btn-success btn-outline text-textSemi" />
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+            <div className='flex items-center mt-10'>
+                <div className='h-[5px] w-1/2 bg-slate-400 rounded-lg'></div>
+                <div className='px-3'>or</div>
+                <div className='h-[5px] w-1/2 bg-slate-400 rounded-lg'></div>
+            </div>
+            <h3 className="text-4xl font-bold text-success mt-7 underline">Get In <span className='text-info'>Touch</span></h3>
+            <ul className='flex justify-center my-10'>
+                <li className='px-2'><a href="https://github.com/alamindjp" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={github} alt="" /></a></li>
+                <li className='px-2'><a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSMVxgSRldqFwkkttbMSnMPqwBMSsmZtscJpZMJHFNbrqZbsHkjjFbhBlgJTVCRmWWnBdlrR" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={gmail} alt="" /></a></li>
+                <li className='px-2'><a href="https://www.linkedin.com/in/alamindjp/" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={linkedIn} alt="" /></a></li>
+                <li className='px-2'><a href="https://www.facebook.com/alamindjp/" target='_blank' rel="noReferrer"><img className='w-[50px] hover:animate-bounce' src={facebook} alt="" /></a></li>
+            </ul>
             <Footer/>
         </>
     );

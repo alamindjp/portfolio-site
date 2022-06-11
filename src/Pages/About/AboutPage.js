@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AboutImage from "../../Assets/Image/Profile-Image.png"
+import AboutImage from "../../Assets/Image/Profile-Image.jpg"
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 
